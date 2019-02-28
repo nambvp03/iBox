@@ -115,7 +115,7 @@ public class GoogleDriveManagerTest {
 
 	@PrepareForTest(FileList.class)
 	@Test
-	public void modifyFileUnitTest() throws IOException, GeneralSecurityException {
+	public void testModifyFile() throws IOException, GeneralSecurityException {
 		/*
 		Drive servicemock = mock(Drive.class);
 		Drive.Files mock2 = mock(Drive.Files.class);

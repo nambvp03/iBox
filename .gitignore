@@ -23,7 +23,6 @@
 hs_err_pid*
 
 /target/
-/tokens/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -37,7 +36,6 @@ hs_err_pid*
 
 # Front-end files
 .DS_Store
-credentials.json
 node_modules/
 **/static/index.js
 **/static/vendors.js

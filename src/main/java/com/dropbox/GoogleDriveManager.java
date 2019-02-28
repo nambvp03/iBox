@@ -13,7 +13,7 @@ import com.google.api.services.drive.model.FileList;
 public class GoogleDriveManager {
 
 	static final boolean RECURSIVE = false;
-	static final String PATH_LOCAL = "/home/dell/Desktop/CPP/CS5850/iBox_local/";
+	static final String PATH_LOCAL = "./iBox_local/";
 	static final String PATH_DRIVE = "1xiIwOJphDnuBK4vPGUz3DVOjPIfTydjb";
 
 	public static boolean createFile(Drive service, Path fileName) throws IOException {

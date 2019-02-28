@@ -5,6 +5,8 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_DELETE;
 import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 import static java.nio.file.StandardWatchEventKinds.OVERFLOW;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -57,7 +59,7 @@ public class WatchDirLocal {
 	 * If modifying these scopes, delete your previously saved tokens/ folder.
 	 */
 	private static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE);
-	private static final String CREDENTIALS_FILE_PATH = "credentials.json";
+	private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
 	/**
 	 * Creates a WatchService and registers the given directory
@@ -178,7 +180,12 @@ public class WatchDirLocal {
 	 */
 	public static Credential getCredentials(NetHttpTransport HTTP_TRANSPORT) throws IOException {
 		// Load client secrets.
+		
+		//ClassLoader classLoader = WatchDirLocal.class.getClass().getClassLoader();
+		//File file = new File(classLoader.getResource(CREDENTIALS_FILE_PATH).getFile());
+		
 		InputStream in = WatchDirLocal.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+		//InputStream in = new FileInputStream(file);
 		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
 		// Build flow and trigger user authorization request.

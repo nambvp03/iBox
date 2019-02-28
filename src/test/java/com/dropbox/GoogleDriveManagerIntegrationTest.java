@@ -21,19 +21,37 @@ import com.google.api.services.drive.Drive;
 public class GoogleDriveManagerIntegrationTest {
 
 	static Drive service;
-	@Before
-	public void setup() throws GeneralSecurityException, IOException {
+	/*@Before
+	public void setup() throws GeneralSecurityException, IOException*/
+	/*static{
 		String APPLICATION_NAME = "Google Drive API Java Quickstart";
 		JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
-		final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-		service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, WatchDirLocal.getCredentials(HTTP_TRANSPORT))
-				.setApplicationName(APPLICATION_NAME)
-				.build();
-	}
+		NetHttpTransport HTTP_TRANSPORT;
+		try {
+			HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+			service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, WatchDirLocal.getCredentials(HTTP_TRANSPORT))
+					.setApplicationName(APPLICATION_NAME)
+					.build();
+		} catch (GeneralSecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
 
 	@Test
 	public void testCreateFileIntegration() throws IOException, GeneralSecurityException {
+		String APPLICATION_NAME = "Google Drive API Java Quickstart";
+		JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, WatchDirLocal.getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME)
+				.build();
+		
+		
 		String absoluteFilePath = GoogleDriveManager.PATH_LOCAL+"upload.txt";
 		java.io.File file = new java.io.File(absoluteFilePath);
 		file.createNewFile();    	
@@ -48,6 +66,13 @@ public class GoogleDriveManagerIntegrationTest {
 
 	@Test
 	public void testCreateFileFailIntegration() throws IOException, GeneralSecurityException {	
+		String APPLICATION_NAME = "Google Drive API Java Quickstart";
+		JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, WatchDirLocal.getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME)
+				.build();
+		
 		Path path = Paths.get("nonexistent.txt");
 		assertFalse(GoogleDriveManager.createFile(service, path));
 		assertEquals(GoogleDriveManager.getFileId(service, path),"");
@@ -55,6 +80,13 @@ public class GoogleDriveManagerIntegrationTest {
 
 	@Test
 	public void testDeleteFileIntegration() throws GeneralSecurityException, IOException  {
+		String APPLICATION_NAME = "Google Drive API Java Quickstart";
+		JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, WatchDirLocal.getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME)
+				.build();
+		
 		String absoluteFilePath = GoogleDriveManager.PATH_LOCAL + "delete.txt";
 		java.io.File file = new java.io.File(absoluteFilePath);
 		file.createNewFile();  
@@ -70,12 +102,26 @@ public class GoogleDriveManagerIntegrationTest {
 
 	@Test
 	public void testDeleteFileFailIntegration() throws GeneralSecurityException, IOException  {
+		String APPLICATION_NAME = "Google Drive API Java Quickstart";
+		JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, WatchDirLocal.getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME)
+				.build();
+		
 		Path path = Paths.get("nonexistent.txt");		
 		assertFalse(GoogleDriveManager.deleteFile(service, path));        
 	}
 
 	@Test
 	public void testModifyFileIntegration() throws GeneralSecurityException, IOException  {
+		String APPLICATION_NAME = "Google Drive API Java Quickstart";
+		JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, WatchDirLocal.getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME)
+				.build();
+		
 		String absoluteFilePath = GoogleDriveManager.PATH_LOCAL + "modify.txt";
 		java.io.File file = new java.io.File(absoluteFilePath);
 		file.createNewFile();  
@@ -91,6 +137,13 @@ public class GoogleDriveManagerIntegrationTest {
 
 	@Test
 	public void testModifyFileFailIntegration() throws GeneralSecurityException, IOException  {
+		String APPLICATION_NAME = "Google Drive API Java Quickstart";
+		JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+		NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+		service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, WatchDirLocal.getCredentials(HTTP_TRANSPORT))
+				.setApplicationName(APPLICATION_NAME)
+				.build();
+		
 		Path path = Paths.get("nonexistent.txt");
 
 		assertFalse(GoogleDriveManager.modifyFile(service, path));

@@ -39,7 +39,7 @@ import com.google.api.services.drive.DriveScopes;
 
 public class WatchDirLocal {
 
-	private static boolean exitFlag;
+	static boolean exitFlag;
 
 	private final WatchService watcher;
 	private final Map<WatchKey,Path> keys;
@@ -169,6 +169,7 @@ public class WatchDirLocal {
 				}
 			}
 		}
+		System.out.println("Exit from loop");
 	}
 
 	/**

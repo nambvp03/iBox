@@ -1,7 +1,6 @@
 package com.dropbox;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 
@@ -23,7 +22,12 @@ public class WatchDirLocalTest {
 	
 	@Test
 	public void testProcessEvents() {
-		GoogleDriveManager googleDrive = (GoogleDriveManager) mock(GoogleDriveManager.class);
-		//new WatchDirLocal().processEvents(googleDrive);
+		try {
+			TimerThread tt = new TimerThread();
+			tt.start();
+			new WatchDirLocal().processEvents();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

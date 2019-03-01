@@ -97,7 +97,7 @@ public class GoogleDriveManagerTest {
 
 	@PrepareForTest(FileList.class)
 	@Test
-	public void deleteFileUnitTest() throws IOException, GeneralSecurityException {
+	public void testDeleteFile() throws IOException, GeneralSecurityException {
 
 		/*Drive servicemock = mock(Drive.class);
 		Drive.Files mock2 = mock(Drive.Files.class);
@@ -116,7 +116,7 @@ public class GoogleDriveManagerTest {
 	@PrepareForTest(FileList.class)
 	@Test
 	public void testModifyFile() throws IOException, GeneralSecurityException {
-		/*
+		
 		Drive servicemock = mock(Drive.class);
 		Drive.Files mock2 = mock(Drive.Files.class);
 		Drive.Files.List mock3 = mock(Drive.Files.List.class);
@@ -126,9 +126,8 @@ public class GoogleDriveManagerTest {
 		when(mock3.execute()).thenReturn(mock4);
 
 		Path path = Paths.get("a.txt");
-		assertFalse(GoogleDrive.deleteFile(servicemock, path));
-		verify(servicemock, times(1)).files();	
-		 */	
+		assertFalse(GoogleDriveManager.modifyFile(servicemock, path));
+		verify(servicemock, times(1)).files();		
 	}
 /*
 	@Test

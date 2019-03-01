@@ -39,7 +39,7 @@ public class GoogleDriveManager {
 		try {
 			String fileId = getFileId(service, fileName);
 
-			if (fileId != "") {
+			if (!"".equals(fileId)) {
 				service.files().delete(fileId).execute();
 				return true;
 			}
@@ -54,7 +54,7 @@ public class GoogleDriveManager {
 	public static boolean modifyFile(Drive service, Path fileName) {
 		try {
 			String fileId = getFileId(service, fileName);
-			if(fileId != "") {
+			if(!"".equals(fileId)) {
 				File fileMetadata = new File();
 				fileMetadata.setName(fileName.toString());
 

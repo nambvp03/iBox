@@ -74,7 +74,7 @@ public class GoogleDriveManagerIntegrationTest {
 		GoogleDriveManager.createFile(service, path);
 
 		assertTrue(GoogleDriveManager.deleteFile(service, path));
-		assertEquals(GoogleDriveManager.getFileId(service, path),"");
+		assertEquals("", GoogleDriveManager.getFileId(service, path));
 
 		file.delete();
 

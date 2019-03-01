@@ -67,7 +67,7 @@ public class WatchDirLocal {
 		this.keys = new HashMap<WatchKey,Path>();
 
 		try {
-			System.out.format("Scanning %s ...\n", GoogleDriveManager.PATH_LOCAL);
+			System.out.format("Scanning %s ...%n", GoogleDriveManager.PATH_LOCAL);
 			register();
 
 			// enable trace after initial registration
@@ -99,10 +99,10 @@ public class WatchDirLocal {
 		if (trace) {
 			Path prev = keys.get(key);
 			if (prev == null) {
-				System.out.format("register: %s\n", dir);
+				System.out.format("register: %s%n", dir);
 			} else {
 				if (!dir.equals(prev)) {
-					System.out.format("update: %s -> %s\n", prev, dir);
+					System.out.format("update: %s -> %s%n", prev, dir);
 				}
 			}
 		}
@@ -145,7 +145,7 @@ public class WatchDirLocal {
 				Path child = dir.resolve(fileName);
 
 				// print out event
-				System.out.format("%s: %s\n", event.kind().name(), child);
+				System.out.format("%s: %s%n", event.kind().name(), child);
 				if (kind == ENTRY_CREATE) {
 					GoogleDriveManager.createFile(service, fileName);
 					System.out.format("File %s Created %n", fileName);
@@ -169,7 +169,7 @@ public class WatchDirLocal {
 				}
 			}
 		}
-		System.out.println("Exit from loop");
+		System.out.println();
 	}
 
 	/**
